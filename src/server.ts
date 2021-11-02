@@ -7,9 +7,9 @@ export default function createServer() {
 
   app.use("/feeds", feeds);
 
-  app.get("/", (err: Error, req: Request, res: Response, next: NextFunction) => {
+  app.get("/", (err: any, req: Request, res: Response, next: NextFunction) => {
       res
-        .status(500)
+        .status(err.status)
         .json({message: err.message});
   });
 
