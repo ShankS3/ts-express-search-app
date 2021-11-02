@@ -25,7 +25,7 @@ const expected = [
 ];
 
 describe('GET /feeds', () => {
-  it('should return 200 & valid response if only pageNo provided', (done) => {
+  it('should return 200 & valid response', (done) => {
     request(app)
       .get('/feeds')
       .expect(200)
