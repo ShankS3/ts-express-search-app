@@ -7,8 +7,10 @@ export default function createServer() {
 
   app.use("/feeds", feeds);
 
-  app.get("/", (req: Request, res: Response, next: NextFunction) => {
-      res.send ("Hello world!");
+  app.get("/", (err: Error, req: Request, res: Response, next: NextFunction) => {
+      res
+        .status(500)
+        .json({message: err.message});
   });
 
   return app;
