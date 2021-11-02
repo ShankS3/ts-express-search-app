@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+import { getFeeds } from 'controllers/feeds';
 
 const router = Router();
 
@@ -6,7 +7,7 @@ const router = Router();
 // @desc Fetch feeds from file
 // @access PUBLIC
 router.get("/", (req: Request, res: Response) => {
-    res.sendStatus(200);
+    res.json(getFeeds());
 });
 
 export default router;
