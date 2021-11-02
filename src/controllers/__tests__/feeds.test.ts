@@ -1,5 +1,7 @@
 import request from "supertest";
 import createServer from "server";
+import fs from 'fs';
+import { getFeeds } from "controllers/feeds";
 
 const app = createServer();
 
@@ -35,4 +37,10 @@ describe('GET /feeds', () => {
           done();
       });
   });
+
+  it('should fetch json file from path', () => {
+    const readFileSyncSpy = jest.spyOn(fs, 'readFileSync');
+    getFeeds();
+    expect(readFileSyncSpy).toBeCalledWith("*/ts-express-search-app/public/assets/feeds.json");
+  })
 });
