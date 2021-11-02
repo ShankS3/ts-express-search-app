@@ -5,7 +5,8 @@ import { getFeeds } from "controllers/feeds";
 
 const app = createServer();
 
-const expected = [
+const expected = {
+  feeds: [
   {
     "name": "Customer Assurance Liaison",
     "image": "http://lorempixel.com/640/480",
@@ -24,7 +25,9 @@ const expected = [
     "description": "Rerum voluptatibus deleniti. Et quo ea magnam quisquam aliquam sequi sed praesentium. Similique est maiores. Tempora sed ad dolores error deserunt possimus sed perferendis molestiae. Doloribus fuga velit ipsum voluptatem ut ducimus.",
     "dateLastEdited": "2018-07-27T21:33:53.485Z"
   },
-];
+],
+totalCount: 100
+};
 
 describe('GET /feeds', () => {
   it('should return 200 & valid response', (done) => {
@@ -38,7 +41,7 @@ describe('GET /feeds', () => {
       });
   });
 
-  it('should fetch json file from path', () => {
+  it('should fetch json file from path', (done) => {
     const readFileSyncSpy = jest.spyOn(fs, 'readFileSync');
     getFeeds();
     expect(readFileSyncSpy).toBeCalledWith("*/ts-express-search-app/public/assets/feeds.json");
