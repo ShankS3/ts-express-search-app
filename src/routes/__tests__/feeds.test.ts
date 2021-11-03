@@ -13,6 +13,6 @@ describe("feed routes", () => {
   it("/feeds should respond with 400 if no page param found", async () => {
     let response = await request(app).get("/feeds");
     expect(response.status).toEqual(400);
-    expect(response.text).toEqual("Required parameter 'page' is missing");
+    expect(response.text).toEqual(JSON.stringify({name: "Bad Request", message:"Required parameter 'page' is missing"}));
   })
 });
