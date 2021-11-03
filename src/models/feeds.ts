@@ -6,3 +6,10 @@ export class Feed {
     public dateLastEdited: string
   ) {}
 }
+
+export class FeedsResponse {
+  constructor (
+    public feeds: Feed[],
+    public totalCount: number
+  ) {}
+}
