@@ -6,8 +6,6 @@ const router = Router();
 // @route GET /feeds
 // @desc Fetch feeds from file
 // @access PUBLIC
-router.get("/", (req: Request, res: Response) => {
-    res.json(getFeeds());
-});
+router.get("/", getFeeds);
 
 export default router;
