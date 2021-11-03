@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import fs from 'fs';
+import _ from 'lodash';
 import path from 'path';
 import { Feed, FeedsResponse } from 'models/feeds';
-import _ from 'lodash';
 
 const page_size: number = 10;
 
 export const getFeeds = async(req: Request, res: Response): Promise<void> => {
-  const { page="1", searchText="", sortBy="" } = req.query;
+  const { page, searchText="", sortBy="" } = req.query;
   let reqPage = parseInt(<string>page,10);
   let [sortOn, sortType] = _.split(<string>sortBy, ',');
 
