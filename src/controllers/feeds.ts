@@ -23,8 +23,15 @@ export const getFeeds = async(req: Request, res: Response): Promise<void> => {
                         || searchString.every(item => _.includes(_.toLower(feed.description), _.toLower(item)))
                       )
                       .orderBy([sortOn], [<'asc'|'desc'>sortType])
-                      .slice(page_size*(reqPage-1), page_size*reqPage)
                       .value();
 
-  await res.json({feeds: data, totalCount: feeds.length} as FeedsResponse);
+  let pageData: Feed[] = data.slice(page_size*(reqPage-1), page_size*reqPage);
+
+  const response: FeedsResponse = {
+    data: pageData,
+    totalCount: data.length,
+    pageSize: Math.ceil(data.length / page_size)
+  }
+
+  await res.json(response);
 }

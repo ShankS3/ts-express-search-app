@@ -9,7 +9,8 @@ export class Feed {
 
 export class FeedsResponse {
   constructor (
-    public feeds: Feed[],
-    public totalCount: number
+    public data: Feed[],
+    public totalCount: number,
+    public pageSize: number
   ) {}
 }
